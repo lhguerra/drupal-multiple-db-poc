@@ -35,7 +35,7 @@ services:
     extends:
       service: meta
     image: mysql:5.6
-    container_name: DB_CONTAINER_NAME
+    container_name: multiple-db-poc-db
     volumes:
       - mysql:/var/lib/mysql
 
