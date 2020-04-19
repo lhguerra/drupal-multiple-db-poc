@@ -2,4 +2,4 @@ image:
   file: .gitpod.dockerfile
 tasks:
   - init: echo "Replace me with a build script for the project."
-    command: sudo service docker start
+    command: service docker start
