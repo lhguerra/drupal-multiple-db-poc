@@ -21,7 +21,7 @@ stop:
 
 clean:
 	docker-compose down
-	docker rmi APP_IMAGE_NAME
+	docker rmi multiple-db-poc
 
 ci-clean:
 	docker-compose down

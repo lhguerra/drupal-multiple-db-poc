@@ -1,0 +1,21 @@
+# Temporary files.
+temp/*
+!temp/.gitkeep
+
+# Composer dependencies.
+/vendor/
+
+# Node modules.
+node_modules
+
+# Drupal core and contrib files.
+/web/core
+/web/profiles/contrib
+/web/modules/contrib
+/web/themes/contrib
+
+# Drupal files folder.
+/web/sites/default/files
+
+#Drupal config files
+/web/sites/**/settings.local.php

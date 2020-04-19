@@ -12,7 +12,7 @@ services:
   app:
     extends:
       service: meta
-    image: APP_IMAGE_NAME
+    image: multiple-db-poc
     build:
       context: ./docker/
       args:
