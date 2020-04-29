@@ -1,0 +1,5 @@
+entity.default_entity.add_form:
+  route_name: entity.default_entity.add_form
+  title: 'Add Default entity'
+  appears_on:
+    - entity.default_entity.collection

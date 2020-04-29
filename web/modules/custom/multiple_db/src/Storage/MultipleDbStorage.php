@@ -6,7 +6,7 @@ use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Entity\Sql\SqlContentEntityStorage;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class SecondDbStorage extends SqlContentEntityStorage {
+class MultipleDbStorage extends SqlContentEntityStorage {
   public static function createInstance(ContainerInterface $container, EntityTypeInterface $entityType) {
     return new static(
       $entityType,

@@ -1,0 +1,14 @@
+
+# Default entity menu items definition
+entity.default_entity.collection:
+  title: 'Default entity list'
+  route_name: entity.default_entity.collection
+  description: 'List Default entity entities'
+  parent: system.admin_structure
+  weight: 100
+
+default_entity.admin.structure.settings:
+  title: 'Default entity settings'
+  description: 'Configure Default entity entities'
+  route_name: default_entity.settings
+  parent: system.admin_structure

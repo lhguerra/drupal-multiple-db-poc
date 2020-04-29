@@ -1,0 +1,20 @@
+add default entity entities:
+  title: 'Create new Default entity entities'
+
+administer default entity entities:
+  title: 'Administer Default entity entities'
+  description: 'Allow to access the administration form to configure Default entity entities.'
+  restrict access: true
+
+delete default entity entities:
+  title: 'Delete Default entity entities'
+
+edit default entity entities:
+  title: 'Edit Default entity entities'
+
+view published default entity entities:
+  title: 'View published Default entity entities'
+
+view unpublished default entity entities:
+  title: 'View unpublished Default entity entities'
+
