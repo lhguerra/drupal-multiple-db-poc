@@ -2,7 +2,7 @@ services:
   multiple_db.database.second:
     class: Drupal\Core\Database\Connection
     factory: Drupal\Core\Database\Database::getConnection
-    arguments: [second_db]
+    arguments: [second_db,second_db]
 
   multiple_db.database.second.entity.query.sql:
     class: Drupal\Core\Entity\Query\Sql\QueryFactory
