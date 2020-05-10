@@ -14,9 +14,8 @@ class DefaultEntityViewsData extends EntityViewsData {
    */
   public function getViewsData() {
     $data = parent::getViewsData();
+    $data['default_entity']['table']['base']['database'] = 'second_db';
 
-    // Additional information for Views integration, such as table joins, can be
-    // put here.
     return $data;
   }
 
