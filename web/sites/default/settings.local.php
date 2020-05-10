@@ -144,6 +144,6 @@ $databases['default']['default'] = array (
   'driver' => 'mysql',
 );
 
-$databases['second_db']['default'] = [
+$databases['second_db']['second_db'] = [
   'database' => 'second_db',
 ] + $databases['default']['default'];
