@@ -143,3 +143,7 @@ $databases['default']['default'] = array (
   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
   'driver' => 'mysql',
 );
+
+$databases['second_db']['second_db'] = [
+  'database' => 'second_db',
+] + $databases['default']['default'];

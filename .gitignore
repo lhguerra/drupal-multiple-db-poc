@@ -16,3 +16,4 @@ node_modules
 
 # Drupal files folder.
 /web/sites/default/files
+/web/sites/default/settings.local.php
