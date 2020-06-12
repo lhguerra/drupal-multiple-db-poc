@@ -1,1 +1,9 @@
 <?php
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function multiple_db_entity_type_alter(array &$entity_types)
+{
+  $entity_types['node']->setHandlerClass('storage', 'Drupal\multiple_db\NodeStorage');
+}

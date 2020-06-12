@@ -1,5 +1,7 @@
-name: 'multiple_db'
+name: "multiple_db"
 type: module
-description: 'My Awesome Module'
+description: "My Awesome Module"
 core: 8.x
-package: 'Custom'
+package: "Custom"
+dependencies:
+  - drupal:node
