@@ -133,7 +133,7 @@ $settings['skip_permissions_hardening'] = TRUE;
 /**
  * Database.
  */
-$databases['default']['default'] = array (
+$databases['default']['default'] = [
   'database' => '{MYSQL_DATABASE}',
   'username' => '{MYSQL_USER}',
   'password' => '{MYSQL_PASSWORD}',
@@ -142,7 +142,7 @@ $databases['default']['default'] = array (
   'port' => '',
   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
   'driver' => 'mysql',
-);
+];
 
 $databases['second_db']['second_db'] = [
   'database' => 'second_db',
