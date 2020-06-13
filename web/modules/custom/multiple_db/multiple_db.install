@@ -1,47 +1,20 @@
 <?php
 
-// {node} (vid, type, uuid, langcode)
-function multiple_db_update_8800()
+/**
+ * Create node tables.
+ */
+function multiple_db_update_8801()
 {
   \Drupal\Core\Database\Database::setActiveConnection('second_db');
 
   $database = \Drupal\Core\Database\Database::getConnection('second_db');
   $schema = $database->schema();
 
-  $table_name = 'node';
-  $table_schema = [
-    'fields' => [
-      'nid' => [
-        'type' => 'int',
-        'length' => 10,
-        'not null' => TRUE,
-      ],
-      'vid' => [
-        'type' => 'int',
-        'length' => 10,
-        'not null' => FALSE,
-      ],
-      'type' => [
-        'type' => 'varchar',
-        'length' => 32,
-        'not null' => TRUE,
-      ],
-      'uuid' => [
-        'type' => 'varchar',
-        'not null' => TRUE,
-        'length' => 128,
-      ],
-      'langcode' => [
-        'type' => 'varchar',
-        'not null' => TRUE,
-        'length' => 12
-      ],
+  require_once __DIR__ . '/includes/db_schema.inc';
 
-    ],
-    'primary key' => ['nid'],
-  ];
-
-  $schema->createTable($table_name, $table_schema);
+  foreach ($tables as $tableName => $table) {
+    $schema->createTable($tableName, $table);
+  }
 
   \Drupal\Core\Database\Database::setActiveConnection();
 }
