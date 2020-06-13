@@ -7,3 +7,25 @@ function multiple_db_entity_type_alter(array &$entity_types)
 {
   $entity_types['node']->setHandlerClass('storage', 'Drupal\multiple_db\NodeStorage');
 }
+
+/**
+ * Drop tables.
+ */
+function drop_database_tables()
+{
+  \Drupal\Core\Database\Database::setActiveConnection('second_db');
+
+  $database = \Drupal\Core\Database\Database::getConnection('second_db')->schema();
+
+  $tables = [
+    'node',
+    'node_revision',
+    'node_field_data'
+  ];
+
+  foreach ($tables as $table) {
+    $database->dropTable($table);
+  }
+
+  \Drupal\Core\Database\Database::setActiveConnection();
+}
