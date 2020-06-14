@@ -20,7 +20,10 @@ function drop_database_tables()
   $tables = [
     'node',
     'node_revision',
-    'node_field_data'
+    'node_field_data',
+    'node_field_revision',
+    'node__comment',
+    'node_revision__comment'
   ];
 
   foreach ($tables as $table) {

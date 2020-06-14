@@ -149,24 +149,144 @@ $tables = [
         'size' => 'tiny'
       ],
     ]
+  ],
+  'node_field_revision' => [
+    'fields' => [
+      'nid' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'size' => 'normal',
+        'key' => 'MUL',
+      ],
+      'vid' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'size' => 'normal',
+        'not null' => FALSE,
+      ],
+      'langcode' => [
+        'type' => 'varchar',
+        'not null' => TRUE,
+        'length' => 12
+      ],
+      'status' => [
+        'type' => 'int',
+        'size' => 'tiny',
+      ],
+      'uid' => [
+        'type' => 'int',
+        'size' => 'normal',
+        'key' => 'MUL',
+        'unsigned' => TRUE
+      ],
+      'title' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'NOT NULL' => TRUE
+      ],
+      'created' => [
+        'type' => 'int',
+        'size' => 'normal',
+        'not null' => TRUE
+      ],
+      'changed' => [
+        'type' => 'int',
+        'size' => 'normal',
+        'not null' => TRUE
+      ],
+      'promote' => [
+        'type' => 'int',
+        'size' => 'tiny'
+      ],
+      'sticky' => [
+        'type' => 'int',
+        'size' => 'tiny'
+      ],
+      'default_langcode' => [
+        'type' => 'int',
+        'size' => 'tiny'
+      ],
+      'revision_translation_affected' => [
+        'type' => 'int',
+        'size' => 'tiny'
+      ],
+    ]
+  ],
+  'node__comment' => [
+    'fields' => [
+      'bundle' => [
+        'type' => 'varchar',
+        'length' => 128,
+        'key' => 'MUL'
+      ],
+      'deleted' => [
+        'type' => 'int',
+        'size' => 'tiny'
+      ],
+      'entity_id' => [
+        'type' => 'int',
+        'length' => 10,
+        'unsigned' => true
+      ],
+      'revision_id' => [
+        'type' => 'int',
+        'length' => 10,
+        'key' => 'MUL',
+        'unsigned' => true
+      ],
+      'langcode' => [
+        'type' => 'varchar',
+        'not null' => TRUE,
+        'length' => 32
+      ],
+      'delta' => [
+        'type' => 'int',
+        'length' => 10,
+        'unsigned' => true
+      ],
+      'comment_status' => [
+        'type' => 'int',
+        'length' => 10,
+        'unsigned' => true
+      ],
+    ]
+  ],
+  'node_revision__comment' => [
+    'fields' => [
+      'bundle' => [
+        'type' => 'varchar',
+        'length' => 128,
+        'key' => 'MUL'
+      ],
+      'deleted' => [
+        'type' => 'int',
+        'size' => 'tiny'
+      ],
+      'entity_id' => [
+        'type' => 'int',
+        'length' => 10,
+        'unsigned' => true
+      ],
+      'revision_id' => [
+        'type' => 'int',
+        'length' => 10,
+        'unsigned' => true
+      ],
+      'langcode' => [
+        'type' => 'varchar',
+        'not null' => TRUE,
+        'length' => 32
+      ],
+      'delta' => [
+        'type' => 'int',
+        'length' => 10,
+        'unsigned' => true
+      ],
+      'comment_status' => [
+        'type' => 'int',
+        'length' => 10,
+        'unsigned' => true
+      ],
+    ]
   ]
 ];
-
-// mysql> desc node_field_data;
-// +-------------------------------+------------------+------+-----+---------+-------+
-// | Field                         | Type             | Null | Key | Default | Extra |
-// +-------------------------------+------------------+------+-----+---------+-------+
-// | nid                           | int(10) unsigned | NO   | PRI | NULL    |       |
-// | vid                           | int(10) unsigned | NO   | MUL | NULL    |       |
-// | type                          | varchar(32)      | NO   | MUL | NULL    |       |
-// | langcode                      | varchar(12)      | NO   | PRI | NULL    |       |
-// | status                        | tinyint(4)       | NO   | MUL | NULL    |       |
-// | uid                           | int(10) unsigned | NO   | MUL | NULL    |       |
-// | title                         | varchar(255)     | NO   | MUL | NULL    |       |
-// | created                       | int(11)          | NO   | MUL | NULL    |       |
-// | changed                       | int(11)          | NO   | MUL | NULL    |       |
-// | promote                       | tinyint(4)       | NO   | MUL | NULL    |       |
-// | sticky                        | tinyint(4)       | NO   |     | NULL    |       |
-// | default_langcode              | tinyint(4)       | NO   |     | NULL    |       |
-// | revision_translation_affected | tinyint(4)       | YES  |     | NULL    |       |
-// +-------------------------------+------------------+------+-----+---------+-------+
