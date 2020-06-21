@@ -56,4 +56,7 @@ beautify:
 xdebug:
 	./scripts/toggle-xdebug.sh
 
+test-db-schema:
+	./scripts/testing/db-schema.sh
+
 default: run

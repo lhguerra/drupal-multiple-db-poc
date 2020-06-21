@@ -31,4 +31,6 @@ function drop_database_tables()
   }
 
   \Drupal\Core\Database\Database::setActiveConnection();
+
+  echo "Dropped second_db node tables";
 }

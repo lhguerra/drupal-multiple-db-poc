@@ -2,23 +2,35 @@
 
 $tables = [
   'node' => [
+    'primary key' => ['nid'],
+    'foreign keys' => array(
+      'node_revision' => array(
+        'table' => 'node_revision',
+        'columns' => array('vid' => 'vid'),
+      ),
+      'node_author' => array(
+        'table' => 'users',
+        'columns' => array('uid' => 'uid'),
+      ),
+    ),
     'fields' => [
       'nid' => [
         'unsigned' => TRUE,
-        'type' => 'int',
-        'length' => 10,
-        'default' => NULL
+        'type' => 'serial',
+        'not null' => TRUE,
       ],
       'vid' => [
         'unsigned' => TRUE,
         'type' => 'int',
         'length' => 10,
         'not null' => FALSE,
+        'default' => NULL
       ],
       'type' => [
         'type' => 'varchar',
         'length' => 32,
         'not null' => TRUE,
+        'default' => ''
       ],
       'uuid' => [
         'type' => 'varchar',
@@ -38,7 +50,6 @@ $tables = [
         'unsigned' => TRUE,
         'type' => 'int',
         'length' => 10,
-        'key' => 'MUL',
         'default' => NULL
       ],
       'vid' => [
@@ -51,12 +62,10 @@ $tables = [
         'type' => 'varchar',
         'not null' => TRUE,
         'length' => 12,
-        'key' => 'MUL'
       ],
       'revision_uid' => [
         'type' => 'int',
         'not null' => FALSE,
-        'key' => 'MUL',
         'length' => 10
       ],
       'revision_timestamp' => [
@@ -87,14 +96,12 @@ $tables = [
       'vid' => [
         'type' => 'int',
         'unsigned' => TRUE,
-        'key' => 'MUL',
         'size' => 'normal',
         'not null' => FALSE,
       ],
       'type' => [
         'type' => 'varchar',
         'length' => 32,
-        'key' => 'MUL',
         'not null' => TRUE,
       ],
       'langcode' => [
@@ -105,34 +112,28 @@ $tables = [
       'status' => [
         'type' => 'int',
         'size' => 'tiny',
-        'key' => 'MUL'
       ],
       'uid' => [
         'type' => 'int',
         'size' => 'normal',
-        'key' => 'MUL',
         'unsigned' => TRUE
       ],
       'title' => [
         'type' => 'varchar',
         'length' => 255,
-        'key' => 'MUL',
         'NOT NULL' => TRUE
       ],
       'created' => [
         'type' => 'int',
         'size' => 'normal',
-        'key' => 'MUL',
         'not null' => TRUE
       ],
       'changed' => [
         'type' => 'int',
         'size' => 'normal',
-        'key' => 'MUL',
         'not null' => TRUE
       ],
       'promote' => [
-        'key' => 'MUL',
         'type' => 'int',
         'size' => 'tiny'
       ],
@@ -156,7 +157,6 @@ $tables = [
         'type' => 'int',
         'unsigned' => TRUE,
         'size' => 'normal',
-        'key' => 'MUL',
       ],
       'vid' => [
         'type' => 'int',
@@ -176,7 +176,6 @@ $tables = [
       'uid' => [
         'type' => 'int',
         'size' => 'normal',
-        'key' => 'MUL',
         'unsigned' => TRUE
       ],
       'title' => [
@@ -213,25 +212,28 @@ $tables = [
     ]
   ],
   'node__comment' => [
+    // 'primary key' => ['deleted', 'entity_id', 'langcode', 'delta'],
     'fields' => [
       'bundle' => [
         'type' => 'varchar',
         'length' => 128,
-        'key' => 'MUL'
+        'not null' => TRUE,
       ],
       'deleted' => [
         'type' => 'int',
-        'size' => 'tiny'
+        'size' => 'tiny',
+        'not null' => TRUE,
+        'default' => 0
       ],
       'entity_id' => [
         'type' => 'int',
         'length' => 10,
+        'not null' => TRUE,
         'unsigned' => true
       ],
       'revision_id' => [
         'type' => 'int',
         'length' => 10,
-        'key' => 'MUL',
         'unsigned' => true
       ],
       'langcode' => [
@@ -242,6 +244,7 @@ $tables = [
       'delta' => [
         'type' => 'int',
         'length' => 10,
+        'not null' => TRUE,
         'unsigned' => true
       ],
       'comment_status' => [
@@ -256,7 +259,6 @@ $tables = [
       'bundle' => [
         'type' => 'varchar',
         'length' => 128,
-        'key' => 'MUL'
       ],
       'deleted' => [
         'type' => 'int',
