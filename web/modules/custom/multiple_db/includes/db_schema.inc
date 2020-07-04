@@ -1,294 +1,742 @@
 <?php
 
+// $tables = [
+//   'node' => array(
+//     'description' => 'The base table for nodes.',
+//     'fields' => array(
+//       'nid' => array(
+//         'type' => 'serial',
+//         'unsigned' => TRUE,
+//         'not null' => TRUE,
+//       ),
+//       'vid' => array(
+//         'type' => 'int',
+//         'unsigned' => TRUE,
+//         'not null' => TRUE,
+//         'default' => 0,
+//       ),
+//       'type' => array(
+//         'type' => 'varchar',
+//         'length' => 32,
+//         'not null' => TRUE,
+//         'default' => '',
+//       ),
+//       'langcode' => array(
+//         'type' => 'varchar',
+//         'length' => 12,
+//         'not null' => TRUE,
+//         'default' => '',
+//       ),
+//       'title' => array(
+//         'type' => 'varchar',
+//         'length' => 255,
+//         'not null' => TRUE,
+//         'default' => '',
+//       ),
+//       'uuid' => array(
+//         'type' => 'int',
+//         'not null' => TRUE,
+//         'default' => 0,
+//       ),
+//       'status' => array(
+//         'type' => 'int',
+//         'not null' => TRUE,
+//         'default' => 1,
+//       ),
+//       'created' => array(
+//         'type' => 'int',
+//         'not null' => TRUE,
+//         'default' => 0,
+//       ),
+//       'changed' => array(
+//         'type' => 'int',
+//         'not null' => TRUE,
+//         'default' => 0,
+//       ),
+//       'comment' => array(
+//         'type' => 'int',
+//         'not null' => TRUE,
+//         'default' => 0,
+//       ),
+//       'promote' => array(
+//         'type' => 'int',
+//         'not null' => TRUE,
+//         'default' => 0,
+//       ),
+//       'moderate' => array(
+//         'type' => 'int',
+//         'not null' => TRUE,
+//         'default' => 0,
+//       ),
+//       'sticky' => array(
+//         'type' => 'int',
+//         'not null' => TRUE,
+//         'default' => 0,
+//       ),
+//       'translate' => array(
+//         'type' => 'int',
+//         'not null' => TRUE,
+//         'default' => 0,
+//       ),
+//     ),
+//     'indexes' => array(
+//       'node_changed' => array(
+//         'changed',
+//       ),
+//       'node_created' => array(
+//         'created',
+//       ),
+//       'node_moderate' => array(
+//         'moderate',
+//       ),
+//       'node_frontpage' => array(
+//         'promote',
+//         'status',
+//         'sticky',
+//         'created',
+//       ),
+//       'node_status_type' => array(
+//         'status',
+//         'type',
+//         'nid',
+//       ),
+//       'node_title_type' => array(
+//         'title',
+//         array(
+//           'type',
+//           4,
+//         ),
+//       ),
+//       'node_type' => array(
+//         array(
+//           'type',
+//           4,
+//         ),
+//       ),
+//       'uuid' => array(
+//         'uuid',
+//       ),
+//       'translate' => array(
+//         'translate',
+//       ),
+//     ),
+//     'unique keys' => array(
+//       'vid' => array(
+//         'vid',
+//       ),
+//     ),
+//     'primary key' => array(
+//       'nid',
+//     ),
+//   ),
+//   'node_revision' => [
+//     'unique keys' => [
+//       'nid' => [
+//         'nid',
+//       ],
+//     ],
+//     'primary key' => [
+//       'nid',
+//     ],
+//     'fields' => [
+//       'nid' => [
+//         'unsigned' => TRUE,
+//         'type' => 'int',
+//         'length' => 10,
+//         'default' => 0,
+//         'not null' => TRUE
+//       ],
+//       'vid' => [
+//         'unsigned' => TRUE,
+//         'type' => 'int',
+//         'length' => 10,
+//         'not null' => FALSE,
+//       ],
+//       'langcode' => [
+//         'type' => 'varchar',
+//         'not null' => TRUE,
+//         'length' => 12,
+//       ],
+//       'revision_uid' => [
+//         'type' => 'int',
+//         'not null' => FALSE,
+//         'length' => 10
+//       ],
+//       'revision_timestamp' => [
+//         'type' => 'int',
+//         'not null' => FALSE,
+//         'length' => 11
+//       ],
+//       'revision_log' => [
+//         'type' => 'text',
+//         'not null' => FALSE,
+//         'default' => NULL,
+//         'size' => 'big'
+//       ],
+//       'revision_default' => [
+//         'type' => 'int',
+//         'length' => 4,
+//         'size ' => 'tiny'
+//       ],
+//     ]
+//   ],
+//   'node_field_data' => [
+//     'fields' => [
+//       'nid' => [
+//         'type' => 'int',
+//         'unsigned' => TRUE,
+//         'size' => 'normal',
+//       ],
+//       'vid' => [
+//         'type' => 'int',
+//         'unsigned' => TRUE,
+//         'size' => 'normal',
+//         'not null' => FALSE,
+//       ],
+//       'type' => [
+//         'type' => 'varchar',
+//         'length' => 32,
+//         'not null' => TRUE,
+//       ],
+//       'langcode' => [
+//         'type' => 'varchar',
+//         'not null' => TRUE,
+//         'length' => 12
+//       ],
+//       'status' => [
+//         'type' => 'int',
+//         'size' => 'tiny',
+//       ],
+//       'uid' => [
+//         'type' => 'int',
+//         'size' => 'normal',
+//         'unsigned' => TRUE
+//       ],
+//       'title' => [
+//         'type' => 'varchar',
+//         'length' => 255,
+//         'NOT NULL' => TRUE
+//       ],
+//       'created' => [
+//         'type' => 'int',
+//         'size' => 'normal',
+//         'not null' => TRUE
+//       ],
+//       'changed' => [
+//         'type' => 'int',
+//         'size' => 'normal',
+//         'not null' => TRUE
+//       ],
+//       'promote' => [
+//         'type' => 'int',
+//         'size' => 'tiny'
+//       ],
+//       'sticky' => [
+//         'type' => 'int',
+//         'size' => 'tiny'
+//       ],
+//       'default_langcode' => [
+//         'type' => 'int',
+//         'size' => 'tiny'
+//       ],
+//       'revision_translation_affected' => [
+//         'type' => 'int',
+//         'size' => 'tiny'
+//       ],
+//     ]
+//   ],
+//   'node_field_revision' => [
+//     'fields' => [
+//       'nid' => [
+//         'type' => 'int',
+//         'unsigned' => TRUE,
+//         'size' => 'normal',
+//       ],
+//       'vid' => [
+//         'type' => 'int',
+//         'unsigned' => TRUE,
+//         'size' => 'normal',
+//         'not null' => FALSE,
+//       ],
+//       'langcode' => [
+//         'type' => 'varchar',
+//         'not null' => TRUE,
+//         'length' => 12
+//       ],
+//       'status' => [
+//         'type' => 'int',
+//         'size' => 'tiny',
+//       ],
+//       'uid' => [
+//         'type' => 'int',
+//         'size' => 'normal',
+//         'unsigned' => TRUE
+//       ],
+//       'title' => [
+//         'type' => 'varchar',
+//         'length' => 255,
+//         'NOT NULL' => TRUE
+//       ],
+//       'created' => [
+//         'type' => 'int',
+//         'size' => 'normal',
+//         'not null' => TRUE
+//       ],
+//       'changed' => [
+//         'type' => 'int',
+//         'size' => 'normal',
+//         'not null' => TRUE
+//       ],
+//       'promote' => [
+//         'type' => 'int',
+//         'size' => 'tiny'
+//       ],
+//       'sticky' => [
+//         'type' => 'int',
+//         'size' => 'tiny'
+//       ],
+//       'default_langcode' => [
+//         'type' => 'int',
+//         'size' => 'tiny'
+//       ],
+//       'revision_translation_affected' => [
+//         'type' => 'int',
+//         'size' => 'tiny'
+//       ],
+//     ]
+//   ],
+//   'node__comment' => [
+//     // 'primary key' => ['deleted', 'entity_id', 'langcode', 'delta'],
+//     'fields' => [
+//       'bundle' => [
+//         'type' => 'varchar',
+//         'length' => 128,
+//         'not null' => TRUE,
+//       ],
+//       'deleted' => [
+//         'type' => 'int',
+//         'size' => 'tiny',
+//         'not null' => TRUE,
+//         'default' => 0
+//       ],
+//       'entity_id' => [
+//         'type' => 'int',
+//         'length' => 10,
+//         'not null' => TRUE,
+//         'unsigned' => true
+//       ],
+//       'revision_id' => [
+//         'type' => 'int',
+//         'length' => 10,
+//         'unsigned' => true
+//       ],
+//       'langcode' => [
+//         'type' => 'varchar',
+//         'not null' => TRUE,
+//         'length' => 32
+//       ],
+//       'delta' => [
+//         'type' => 'int',
+//         'length' => 10,
+//         'not null' => TRUE,
+//         'unsigned' => true
+//       ],
+//       'comment_status' => [
+//         'type' => 'int',
+//         'length' => 10,
+//         'unsigned' => true
+//       ],
+//     ]
+//   ],
+//   'node_revision__comment' => [
+//     'fields' => [
+//       'bundle' => [
+//         'type' => 'varchar',
+//         'length' => 128,
+//       ],
+//       'deleted' => [
+//         'type' => 'int',
+//         'size' => 'tiny'
+//       ],
+//       'entity_id' => [
+//         'type' => 'int',
+//         'length' => 10,
+//         'unsigned' => true
+//       ],
+//       'revision_id' => [
+//         'type' => 'int',
+//         'length' => 10,
+//         'unsigned' => true
+//       ],
+//       'langcode' => [
+//         'type' => 'varchar',
+//         'not null' => TRUE,
+//         'length' => 32
+//       ],
+//       'delta' => [
+//         'type' => 'int',
+//         'length' => 10,
+//         'unsigned' => true
+//       ],
+//       'comment_status' => [
+//         'type' => 'int',
+//         'length' => 10,
+//         'unsigned' => true
+//       ],
+//     ]
+//   ]
+// ];
+
 $tables = [
-  'node' => [
-    'primary key' => ['nid'],
-    'foreign keys' => array(
-      'node_revision' => array(
-        'table' => 'node_revision',
-        'columns' => array('vid' => 'vid'),
-      ),
-      'node_author' => array(
-        'table' => 'users',
-        'columns' => array('uid' => 'uid'),
-      ),
-    ),
-    'fields' => [
-      'nid' => [
-        'unsigned' => TRUE,
-        'type' => 'serial',
-        'not null' => TRUE,
-      ],
-      'vid' => [
-        'unsigned' => TRUE,
-        'type' => 'int',
-        'length' => 10,
-        'not null' => FALSE,
-        'default' => NULL
-      ],
-      'type' => [
-        'type' => 'varchar',
-        'length' => 32,
-        'not null' => TRUE,
-        'default' => ''
-      ],
-      'uuid' => [
-        'type' => 'varchar',
-        'not null' => TRUE,
-        'length' => 128,
-      ],
-      'langcode' => [
-        'type' => 'varchar',
-        'not null' => TRUE,
-        'length' => 12
-      ],
+  "node" => [
+    "description" => "The base table for node entities.",
+    "primary key" => [
+      "nid",
     ],
-  ],
-  'node_revision' => [
-    'fields' => [
-      'nid' => [
-        'unsigned' => TRUE,
-        'type' => 'int',
-        'length' => 10,
-        'default' => NULL
+    "indexes" => [
+      "node_field__type__target_id" => [
+        "type",
+      ]
+    ],
+    "foreign keys" => [
+      "node__revision" => [
+        "table" => "node_revision",
+        "columns" => [
+          "vid" => "vid"
+        ]
+      ]
+    ],
+    "unique keys" => [
+      "node__vid" => [
+        "vid",
       ],
-      'vid' => [
-        'unsigned' => TRUE,
-        'type' => 'int',
-        'length' => 10,
-        'not null' => FALSE,
+      "node_field__uuid__value" => [
+        "uuid",
+      ]
+    ],
+    "fields" => [
+      "nid" => [
+        "type" => "serial",
+        "unsigned" => true,
+        "size" => "normal",
+        "not null" => true,
       ],
-      'langcode' => [
-        'type' => 'varchar',
-        'not null' => TRUE,
-        'length' => 12,
+      "vid" => [
+        "type" => "int",
+        "unsigned" => true,
+        "size" => "normal",
+        "not null" => false,
       ],
-      'revision_uid' => [
-        'type' => 'int',
-        'not null' => FALSE,
-        'length' => 10
+      "type" => [
+        "description" => "The ID of the target entity.",
+        "type" => "varchar_ascii",
+        "length" => 32,
+        "not null" => true,
       ],
-      'revision_timestamp' => [
-        'type' => 'int',
-        'not null' => FALSE,
-        'length' => 11
+      "uuid" => [
+        "type" => "varchar_ascii",
+        "length" => 128,
+        "binary" => false,
+        "not null" => true,
       ],
-      'revision_log' => [
-        'type' => 'text',
-        'not null' => FALSE,
-        'default' => NULL,
-        'size' => 'big'
-      ],
-      'revision_default' => [
-        'type' => 'int',
-        'length' => 4,
-        'size ' => 'tiny'
-      ],
+      "langcode" => [
+        "type" => "varchar_ascii",
+        "length" => 12,
+        "not null" => true,
+      ]
     ]
   ],
-  'node_field_data' => [
-    'fields' => [
-      'nid' => [
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'size' => 'normal',
+  "node_revision" => [
+    "description" => "The revision table for node entities.",
+    "primary key" => [
+      "vid",
+    ],
+    "indexes" => [
+      "node__nid" => [
+        "nid",
       ],
-      'vid' => [
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'size' => 'normal',
-        'not null' => FALSE,
+      "node_field__langcode" => [
+        "langcode",
       ],
-      'type' => [
-        'type' => 'varchar',
-        'length' => 32,
-        'not null' => TRUE,
+      "node_field__revision_uid__target_id" => [
+        "revision_uid",
+      ]
+    ],
+    "foreign keys" => [
+      "node__revisioned" => [
+        "table" => "node",
+        "columns" => [
+          "nid" => "nid"
+        ]
       ],
-      'langcode' => [
-        'type' => 'varchar',
-        'not null' => TRUE,
-        'length' => 12
+      "node_field__revision_uid" => [
+        "table" => "users",
+        "columns" => [
+          "revision_uid" => "uid"
+        ]
+      ]
+    ],
+    "fields" => [
+      "nid" => [
+        "type" => "int",
+        "unsigned" => true,
+        "size" => "normal",
+        "not null" => true,
       ],
-      'status' => [
-        'type' => 'int',
-        'size' => 'tiny',
+      "vid" => [
+        "type" => "serial",
+        "unsigned" => true,
+        "size" => "normal",
+        "not null" => true,
       ],
-      'uid' => [
-        'type' => 'int',
-        'size' => 'normal',
-        'unsigned' => TRUE
+      "langcode" => [
+        "type" => "varchar_ascii",
+        "length" => 12,
+        "not null" => true,
       ],
-      'title' => [
-        'type' => 'varchar',
-        'length' => 255,
-        'NOT NULL' => TRUE
+      "revision_uid" => [
+        "description" => "The ID of the target entity.",
+        "type" => "int",
+        "unsigned" => true,
+        "not null" => false,
       ],
-      'created' => [
-        'type' => 'int',
-        'size' => 'normal',
-        'not null' => TRUE
+      "revision_timestamp" => [
+        "type" => "int",
+        "not null" => false,
       ],
-      'changed' => [
-        'type' => 'int',
-        'size' => 'normal',
-        'not null' => TRUE
+      "revision_log" => [
+        "type" => "text",
+        "size" => "big",
+        "not null" => false,
       ],
-      'promote' => [
-        'type' => 'int',
-        'size' => 'tiny'
-      ],
-      'sticky' => [
-        'type' => 'int',
-        'size' => 'tiny'
-      ],
-      'default_langcode' => [
-        'type' => 'int',
-        'size' => 'tiny'
-      ],
-      'revision_translation_affected' => [
-        'type' => 'int',
-        'size' => 'tiny'
-      ],
-    ]
+      "revision_default" => [
+        "type" => "int",
+        "size" => "tiny",
+        "not null" => false,
+      ]
+    ],
+    "unique keys" => []
   ],
-  'node_field_revision' => [
-    'fields' => [
-      'nid' => [
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'size' => 'normal',
+  "node_field_data" => [
+    "description" => "The data table for node entities.",
+    "primary key" => [
+      "nid",
+      "langcode",
+    ],
+    "indexes" => [
+      "node__id__default_langcode__langcode" => [
+        "nid",
+        "default_langcode",
+        2 => "langcode"
       ],
-      'vid' => [
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'size' => 'normal',
-        'not null' => FALSE,
+      "node__vid" => [
+        "vid",
       ],
-      'langcode' => [
-        'type' => 'varchar',
-        'not null' => TRUE,
-        'length' => 12
+      "node_field__type__target_id" => [
+        "type",
       ],
-      'status' => [
-        'type' => 'int',
-        'size' => 'tiny',
+      "node_field__uid__target_id" => [
+        "uid",
       ],
-      'uid' => [
-        'type' => 'int',
-        'size' => 'normal',
-        'unsigned' => TRUE
+      "node_field__created" => [
+        "created",
       ],
-      'title' => [
-        'type' => 'varchar',
-        'length' => 255,
-        'NOT NULL' => TRUE
+      "node_field__changed" => [
+        "changed",
       ],
-      'created' => [
-        'type' => 'int',
-        'size' => 'normal',
-        'not null' => TRUE
+      "node__status_type" => [
+        "status",
+        "type",
+        2 => "nid"
       ],
-      'changed' => [
-        'type' => 'int',
-        'size' => 'normal',
-        'not null' => TRUE
+      "node__frontpage" => [
+        "promote",
+        "status",
+        2 => "sticky",
+        3 => "created"
       ],
-      'promote' => [
-        'type' => 'int',
-        'size' => 'tiny'
+      "node__title_type" => [
+        "title",
+        [
+          "type",
+          4,
+        ]
+      ]
+    ],
+    "foreign keys" => [
+      "node" => [
+        "table" => "node",
+        "columns" => [
+          "nid" => "nid"
+        ]
+      ]
+    ],
+    "fields" => [
+      "nid" => [
+        "type" => "int",
+        "unsigned" => true,
+        "size" => "normal",
+        "not null" => true,
       ],
-      'sticky' => [
-        'type' => 'int',
-        'size' => 'tiny'
+      "vid" => [
+        "type" => "int",
+        "unsigned" => true,
+        "size" => "normal",
+        "not null" => true,
       ],
-      'default_langcode' => [
-        'type' => 'int',
-        'size' => 'tiny'
+      "type" => [
+        "description" => "The ID of the target entity.",
+        "type" => "varchar_ascii",
+        "length" => 32,
+        "not null" => true,
       ],
-      'revision_translation_affected' => [
-        'type' => 'int',
-        'size' => 'tiny'
+      "langcode" => [
+        "type" => "varchar_ascii",
+        "length" => 12,
+        "not null" => true,
       ],
-    ]
+      "status" => [
+        "type" => "int",
+        "size" => "tiny",
+        "not null" => true,
+      ],
+      "uid" => [
+        "description" => "The ID of the target entity.",
+        "type" => "int",
+        "unsigned" => true,
+        "not null" => true,
+      ],
+      "title" => [
+        "type" => "varchar",
+        "length" => 255,
+        "binary" => false,
+        "not null" => true,
+      ],
+      "created" => [
+        "type" => "int",
+        "not null" => true
+      ],
+      "changed" => [
+        "type" => "int",
+        "not null" => true
+      ],
+      "promote" => [
+        "type" => "int",
+        "size" => "tiny",
+        "not null" => true
+      ],
+      "sticky" => [
+        "type" => "int",
+        "size" => "tiny",
+        "not null" => true
+      ],
+      "default_langcode" => [
+        "type" => "int",
+        "size" => "tiny",
+        "not null" => true
+      ],
+      "revision_translation_affected" => [
+        "type" => "int",
+        "size" => "tiny",
+        "not null" => false
+      ]
+    ],
+    "unique keys" => []
   ],
-  'node__comment' => [
-    // 'primary key' => ['deleted', 'entity_id', 'langcode', 'delta'],
-    'fields' => [
-      'bundle' => [
-        'type' => 'varchar',
-        'length' => 128,
-        'not null' => TRUE,
+  "node_field_revision" => [
+    "description" => "The revision data table for node entities.",
+    "primary key" => [
+      "vid",
+      "langcode",
+    ],
+    "indexes" => [
+      "node__id__default_langcode__langcode" => [
+        "nid",
+        "default_langcode",
+        2 => "langcode"
       ],
-      'deleted' => [
-        'type' => 'int',
-        'size' => 'tiny',
-        'not null' => TRUE,
-        'default' => 0
+      "node_field__uid__target_id" => [
+        "uid",
+      ]
+    ],
+    "foreign keys" => [
+      "node" => [
+        "table" => "node",
+        "columns" => [
+          "nid" => "nid"
+        ]
       ],
-      'entity_id' => [
-        'type' => 'int',
-        'length' => 10,
-        'not null' => TRUE,
-        'unsigned' => true
+      "node__revision" => [
+        "table" => "node_revision",
+        "columns" => [
+          "vid" => "vid"
+        ]
+      ]
+    ],
+    "fields" => [
+      "nid" => [
+        "type" => "int",
+        "unsigned" => true,
+        "size" => "normal",
+        "not null" => true
       ],
-      'revision_id' => [
-        'type' => 'int',
-        'length' => 10,
-        'unsigned' => true
+      "vid" => [
+        "type" => "int",
+        "unsigned" => true,
+        "size" => "normal",
+        "not null" => true
       ],
-      'langcode' => [
-        'type' => 'varchar',
-        'not null' => TRUE,
-        'length' => 32
+      "langcode" => [
+        "type" => "varchar_ascii",
+        "length" => 12,
+        "not null" => true
       ],
-      'delta' => [
-        'type' => 'int',
-        'length' => 10,
-        'not null' => TRUE,
-        'unsigned' => true
+      "status" => [
+        "type" => "int",
+        "size" => "tiny",
+        "not null" => true
       ],
-      'comment_status' => [
-        'type' => 'int',
-        'length' => 10,
-        'unsigned' => true
+      "uid" => [
+        "description" => "The ID of the target entity.",
+        "type" => "int",
+        "unsigned" => true,
+        "not null" => true
       ],
-    ]
-  ],
-  'node_revision__comment' => [
-    'fields' => [
-      'bundle' => [
-        'type' => 'varchar',
-        'length' => 128,
+      "title" => [
+        "type" => "varchar",
+        "length" => 255,
+        "binary" => false,
+        "not null" => false
       ],
-      'deleted' => [
-        'type' => 'int',
-        'size' => 'tiny'
+      "created" => [
+        "type" => "int",
+        "not null" => false
       ],
-      'entity_id' => [
-        'type' => 'int',
-        'length' => 10,
-        'unsigned' => true
+      "changed" => [
+        "type" => "int",
+        "not null" => false
       ],
-      'revision_id' => [
-        'type' => 'int',
-        'length' => 10,
-        'unsigned' => true
+      "promote" => [
+        "type" => "int",
+        "size" => "tiny",
+        "not null" => false
       ],
-      'langcode' => [
-        'type' => 'varchar',
-        'not null' => TRUE,
-        'length' => 32
+      "sticky" => [
+        "type" => "int",
+        "size" => "tiny",
+        "not null" => false
       ],
-      'delta' => [
-        'type' => 'int',
-        'length' => 10,
-        'unsigned' => true
+      "default_langcode" => [
+        "type" => "int",
+        "size" => "tiny",
+        "not null" => true
       ],
-      'comment_status' => [
-        'type' => 'int',
-        'length' => 10,
-        'unsigned' => true
-      ],
-    ]
+      "revision_translation_affected" => [
+        "type" => "int",
+        "size" => "tiny",
+        "not null" => false
+      ]
+    ],
+    "unique keys" => []
   ]
 ];
