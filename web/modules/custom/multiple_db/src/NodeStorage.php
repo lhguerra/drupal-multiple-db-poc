@@ -18,7 +18,7 @@ class NodeStorage extends CoreNodeStorage
   {
     return new static(
       $entityType,
-      $container->get('multiple_db.database.second'),
+      $container->get('multiple_db.database.second_db'),
       $container->get('entity.manager'),
       $container->get('cache.entity'),
       $container->get('language_manager'),

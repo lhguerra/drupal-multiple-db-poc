@@ -1,11 +1,11 @@
 services:
-  multiple_db.database.second:
+  multiple_db.database.second_db:
     class: Drupal\Core\Database\Connection
     factory: Drupal\Core\Database\Database::getConnection
     arguments: [second_db,second_db]
 
-  multiple_db.database.second.entity.query.sql:
+  multiple_db.database.second_db.entity.query.sql:
     class: Drupal\Core\Entity\Query\Sql\QueryFactory
-    arguments: ['@multiple_db.database.second']
+    arguments: ['@multiple_db.database.second_db']
     tags:
       - { name: backend_overridable }

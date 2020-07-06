@@ -10,7 +10,7 @@ class MultipleDbStorage extends SqlContentEntityStorage {
   public static function createInstance(ContainerInterface $container, EntityTypeInterface $entityType) {
     return new static(
       $entityType,
-      $container->get('multiple_db.database.second'),
+      $container->get('multiple_db.database.second_db'),
       $container->get('entity.manager'),
       $container->get('cache.entity'),
       $container->get('language_manager'),
@@ -19,6 +19,6 @@ class MultipleDbStorage extends SqlContentEntityStorage {
   }
 
   public function getQueryServiceName() {
-    return 'multiple_db.database.second.entity.query.sql';
+    return 'multiple_db.database.second_db.entity.query.sql';
   }
 }
