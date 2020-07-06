@@ -199,6 +199,28 @@ class DefaultEntity extends ContentEntityBase implements DefaultEntityInterface 
       ->setLabel(t('Changed'))
       ->setDescription(t('The time that the entity was last edited.'));
 
+    $fields['tags'] = BaseFieldDefinition::create('entity_reference')
+      ->setLabel(t('Tags'))
+      ->setRequired(FALSE)
+      ->setSetting('target_type', 'taxonomy_term')
+      ->setSetting('bundle', 'tags')
+      ->setCardinality(BaseFieldDefinition::CARDINALITY_UNLIMITED)
+      ->setDisplayOptions('view', [
+        'label' => 'visible',
+        'type' => 'author',
+        'weight' => 0,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'inline_entity_form_simple',
+        'weight' => 5,
+        'settings' => [
+          'match_operator' => 'CONTAINS',
+          'size' => '60',
+          'autocomplete_type' => 'tags',
+          'placeholder' => '',
+        ],
+      ]);
+
     return $fields;
   }
 
