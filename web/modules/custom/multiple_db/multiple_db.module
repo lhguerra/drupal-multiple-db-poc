@@ -13,24 +13,6 @@ function multiple_db_entity_type_alter(array &$entity_types)
  */
 function drop_database_tables()
 {
-  $dbConnection = \Drupal\Core\Database\Database::getConnection('default');
-  $esquima = $dbConnection->schema();
-  var_dump(
-    // get_class(
-
-      $esquima->introspectIndexSchema("node__comment")
-
-  //   // \Drupal\Core\Database\Schema::introspectIndexSchema('introspectIndexSchema')
-
-  //     // \Drupal::entityManager()
-  //     //   ->getStorage('field_config')
-  //     //   ->loadByProperties(['field_name' => 'comment'])["node.article.comment"]
-  //     //   ->getItemDefinition()
-  //     //   ->getSettings()
-
-    // )
-  );
-
   \Drupal\Core\Database\Database::setActiveConnection('second_db');
 
   $database = \Drupal\Core\Database\Database::getConnection('second_db')->schema();
