@@ -12,7 +12,8 @@
     "drush/drush": "^9.7",
     "cweagans/composer-patches": "^1.6",
     "drupal/devel_entity_updates": "^2.0",
-    "drupal/graphql": "^3.0"
+    "drupal/graphql": "^3.0",
+    "drupal/pathauto": "^1.8"
   },
   "require-dev": {
     "drupal/coder": "8.*",
