@@ -1,0 +1,14 @@
+uuid: 1ce4fdb0-15cd-448e-9e8c-f26e6c1da54c
+langcode: en
+status: true
+dependencies:
+  module:
+    - multiple_db
+id: default_entity
+label: 'Default Entity'
+type: 'canonical_entities:default_entity'
+pattern: '/default/[default_entity:name:value]'
+selection_criteria: {  }
+selection_logic: and
+weight: 0
+relationships: {  }
