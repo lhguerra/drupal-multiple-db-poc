@@ -1,0 +1,28 @@
+uuid: 93106e1c-85b5-4483-877d-b66484d4ad28
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.server.db_server
+  module:
+    - search_api
+    - multiple_db
+id: default_entity_list
+name: 'Default entity list'
+description: ''
+read_only: false
+field_settings: {  }
+datasource_settings:
+  'entity:default_entity': {  }
+processor_settings:
+  add_url: {  }
+  aggregated_field: {  }
+  language_with_fallback: {  }
+  rendered_item: {  }
+tracker_settings:
+  default:
+    indexing_order: lifo
+options:
+  index_directly: true
+  cron_limit: 50
+server: db_server
