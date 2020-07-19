@@ -54,6 +54,8 @@ then
   # Set PHP_OPTIONS environment variable to fix sendmail error.
   /usr/bin/env PHP_OPTIONS="-d sendmail_path=`which true`" ../bin/drush si standard --site-name="Drupal Multiple Databases POC" --account-name="admin" --account-pass="123456" -y
 
+  drush sql:create --database=second_db --target=default --db-su=root --db-su-pw=password
+
   # 6 - Import configs, if available.
   if [ -f /taller/app/site-id ]
   then

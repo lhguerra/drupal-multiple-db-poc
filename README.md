@@ -12,11 +12,27 @@ This repository exists to demonstrate how to work with custom entities in a data
  - Clone this repository
  - Run `make`
  - If everything went right, you should be able to access your Drupal site in your localhost
+ - Grant second_db access to drupal mysql user by running the following inside de container:
+```
+# Access mysql cli as root (use 'password' for password)
+mysql -u root -h database-host -p
+
+# Then grant the privileges in the mysql cli
+GRANT ALL PRIVILEGES ON second_db.* TO 'drupal'@'%' WITH GRANT OPTION;
+
+```
+ - Run the update script (inside the container)
+```
+cd /taller/app/web
+../scripts/update.sh
+```
  - Access admin area with `admin` as user and `123456` as password
 
 ## Where to look
 ### Default Entity
 The entity "Default Entity" was create to be stored in a secondary database, create content at `admin/structure/default_entity/add` see the list at `/admin/structure/default_entity`.
+### Pathauto
+As you create the content in this entity, note that the url alias is created with the configured pathaut pattern.
 ### View test
 A view named "Default" was created to show that it works just fine! Just look at `/admin/structure/views/view/default`
 ### Search api
@@ -38,4 +54,4 @@ My favorite one. Go to `/graphql/explorer` and run the following query:
   }
 }
 ```
-Now this last one helps to show one very interesting thing: we can make relations between entities from different databases! It is not magic, just EntityStorage doing its job :D 
+Now this last one helps to show a very interesting thing: we can make relations between entities from different databases! It is not magic, just EntityStorage doing its job :D
